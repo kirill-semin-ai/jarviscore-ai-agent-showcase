@@ -7,6 +7,13 @@ The project was created as an experimental local assistant that can route user r
 > This repository is a public showcase of the project architecture, implemented features and engineering approach.
 > The full internal source code is not published because the project is still experimental and contains local environment-specific files.
 
+## Documentation
+
+More detailed project documentation:
+
+* [Architecture](docs/architecture.md) — high-level structure of the JarvisCore AI-agent platform.
+* [Safety and Testing](docs/safety-and-testing.md) — safe execution, fake success prevention, smoke tests, regression gates and snapshot workflow.
+* [Roadmap](docs/roadmap.md) — planned public demo version, NLP intent classifier and future portfolio improvements.
 ---
 
 ## Project Goals
