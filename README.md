@@ -1,11 +1,13 @@
 # JarvisCore — Local AI-Agent Platform Showcase
 
-**JarvisCore** is a local AI-agent platform built around Python, OpenWebUI, OpenAI-compatible API and local LLM models.
+**JarvisCore** is a local AI-agent platform built around Python, OpenWebUI, an OpenAI-compatible API and local LLM models.
 
 The project was created as an experimental local assistant that can route user requests, work with sources, execute safe actions, check its own system state and preserve stable snapshots after successful verification.
 
 > This repository is a public showcase of the project architecture, implemented features and engineering approach.
 > The full internal source code is not published because the project is still experimental and contains local environment-specific files.
+
+---
 
 ## Documentation
 
@@ -13,7 +15,8 @@ More detailed project documentation:
 
 * [Architecture](docs/architecture.md) — high-level structure of the JarvisCore AI-agent platform.
 * [Safety and Testing](docs/safety-and-testing.md) — safe execution, fake success prevention, smoke tests, regression gates and snapshot workflow.
-* [Roadmap](docs/roadmap.md) — planned public demo version, NLP intent classifier and future portfolio improvements.
+* [Roadmap](docs/roadmap.md) — planned public demo version, documentation improvements and future portfolio extensions.
+
 ---
 
 ## Project Goals
@@ -54,6 +57,8 @@ The system includes routing logic for different types of requests:
 * technical commands;
 * AI-agent workflows.
 
+The routing layer helps separate normal conversation from technical commands, source-reading tasks, safe execution workflows and potentially sensitive actions.
+
 ### Source Reader
 
 The source reader module was designed to process external sources and produce structured outputs.
@@ -65,6 +70,8 @@ It supports:
 * source cards;
 * limitations reporting;
 * saved source memory.
+
+This makes it possible for the assistant to work not only with chat messages, but also with external information sources.
 
 ### Safe Execution Pipeline
 
@@ -79,6 +86,8 @@ The pipeline includes:
 * rollback-oriented workflow;
 * blocking unsafe or ambiguous operations.
 
+The main engineering principle is that the assistant should not claim success unless the requested action was actually completed and verified.
+
 ### Testing and Reliability
 
 The project uses several reliability layers:
@@ -91,6 +100,8 @@ The project uses several reliability layers:
 * queue cleanliness checks;
 * snapshot creation after successful verification.
 
+These checks help detect broken behavior after changes and reduce the risk of fake success.
+
 ### Command Center
 
 JarvisCore includes a command/status center that summarizes the current state of the system:
@@ -101,6 +112,8 @@ JarvisCore includes a command/status center that summarizes the current state of
 * readiness status;
 * regression gate status;
 * snapshot status.
+
+This gives a single place to understand whether the system is ready, clean and safe to continue working.
 
 ---
 
@@ -179,6 +192,8 @@ The project reached a stable internal state with:
 * regression gate passing;
 * snapshot created after successful verification.
 
+This repository is focused on presenting the architecture and engineering approach rather than publishing the full local implementation.
+
 ---
 
 ## Roadmap
@@ -186,18 +201,33 @@ The project reached a stable internal state with:
 Planned next steps:
 
 * create a simplified public demo version;
-* add diagrams of the architecture;
+* add architecture diagrams;
 * add sanitized examples of system outputs;
-* create a small NLP intent classifier project connected to the JarvisCore idea;
-* improve documentation for AI-agent workflows.
+* improve documentation for AI-agent workflows;
+* continue developing related ML/NLP portfolio projects;
+* explore future PyTorch / Transformers experiments connected to assistant routing and NLP.
 
 ---
 
-## Related Portfolio Plans
+## Related Portfolio Projects
 
-This showcase will be extended with:
+This showcase is connected with a separate ML/NLP project:
 
-* an NLP intent classifier for AI-assistant commands;
-* examples of text classification;
-* baseline ML experiments with scikit-learn;
-* future PyTorch / Transformers experiments.
+* [AI Assistant Intent Classifier](https://github.com/kirill-semin-ai/ai-assistant-intent-classifier) — a small NLP classifier for AI-assistant command routing using Python, TF-IDF, Logistic Regression and scikit-learn.
+
+The intent classifier demonstrates a small machine learning component that can support AI-assistant routing logic.
+
+Current result of the baseline classifier:
+
+* dataset: 120 labeled examples;
+* accuracy: 0.833;
+* macro avg F1-score: 0.83;
+* weighted avg F1-score: 0.83.
+
+---
+
+## Notes
+
+JarvisCore is an experimental local AI-agent project. The public repository is intentionally limited to safe documentation, architecture description and portfolio materials.
+
+The full internal project is not published because it contains local paths, environment-specific configuration and experimental automation code.
